@@ -1,19 +1,19 @@
-import Home from './Home/home';
-import './App.css'
-import { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
+import Layout from "./Layout/layout";
+import Home from "./Home/home";
+import About from "./About/about";
+
+import "./App.css";
 
 function App() {
-  const [animation, setAnimation] = useState(true)
-  const toggleAnimation = () => {
-  console.log(animation)
-  setAnimation(animation => !animation)
-  }
-    
   return (
     <div className="App">
-      <Home/>      
-      <button className="App-button" onClick={toggleAnimation} >Modifier l’animation</button>
-      
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
